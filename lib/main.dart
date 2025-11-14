@@ -29,6 +29,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
+  String _mascotName = '';
 
   void _increaseQuantity() {
     if (_quantity < widget.maxQuantity) {
@@ -52,6 +53,16 @@ class _OrderScreenState extends State<OrderScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter mascot name',
+                labelText: 'Mascot Name',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() => _mascotName = value);
+              },
+            ),
             OrderItemDisplay(
               _quantity,
               'Footlong',
